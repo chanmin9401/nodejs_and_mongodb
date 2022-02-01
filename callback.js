@@ -15,3 +15,18 @@ let callback = (error, sum) => {
 }
 
 addSum(10,20, callback);
+
+// callback hell
+addSum(10,10,(error1, sum1) =>{
+    if(error1) return console.log({error1});
+    console.log({sum1});
+    addSum(sum1, 15, (error2, sum2) =>{
+        if(error2) return console.log({error2});
+        console.log({sum2});
+        addSum(sum2, 30, (error3, sum3) => {
+            /*
+                ......  매번 에러와 이전 합을 체크해야하며, 코드의 depth가 점점 깊어지는 현상
+            */
+        });
+    });
+});
